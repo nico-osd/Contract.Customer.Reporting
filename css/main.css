@@ -1,0 +1,225 @@
+/* Monokai Style
+map0=(  [foreground     ]='#F8F8F2'     [background     ]='#272822'
+        [cursor         ]='#F8F8F0'     [selection      ]='#49483E'
+        [pink           ]='#F92672'     [green          ]='#5cd053'
+        [yellow         ]='#E6DB74'     [blue           ]='#66D9EF'
+        [purple         ]='#AE81FF'     [orange         ]='#FD971F'
+        [gray           ]='#75715E'                                     )
+/*
+    [blue   ]: #519FD8
+    [red    ]: #AF2B12
+    [green  ]: #A6E22E
+
+    Dashboard: Blau 0066B4, Grün 48822A, orange EDA91B, rot C2382F
+*/
+
+/*
+    Standardsize: 16px
+    Größer: 1.3em
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic);
+@import url(http://fonts.googleapis.com/css?family=Dosis:700);
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    color: #000;
+}
+
+h1 {
+    font-family: 'Dosis', sans-serif;
+}
+
+a {
+    color: #519FD8;
+    text-decoration: none;
+}
+
+#wrapper{
+    width: 1000px;
+    margin: auto;
+}
+
+#header{
+    height: 5em;
+}
+
+#headeroverlay {
+    width: 1000px;
+    position: absolute;
+    top: 0px;
+}
+
+#breadcrumb {
+    float: left;
+    color: #519FD8;
+}
+
+#userinfo {
+    float: right;
+    margin-top: 2.5em;
+} 
+
+#content{
+    background-color: white;
+}
+
+#dashboard {
+    width: 960px;
+    margin: 0px auto;
+}
+
+.linkbutton {
+    background:none!important;
+    border:none;
+    padding:0!important;
+    color: #519FD8;
+}
+
+.suche {
+    height:20px; 
+    width:220px; 
+    padding: 5px 8px;
+    border:1px solid #aaa;
+    box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
+    border-radius:2px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+.r10 {
+    margin-right: 10px;
+}
+
+.l10 {
+    margin-left: 10px !important;
+}
+
+.clear {
+    clear:both;
+}
+
+.textright {
+    text-align: right;
+}
+
+.buttonleiste {
+    height: 3em;
+}
+
+.detailliste {
+    text-align: left;
+    border-collapse: collapse;
+    width: 1000px;
+}
+
+.detailliste td {
+    padding: 8px;
+}
+
+.detailliste .beschriftung {
+    width:150px;
+    padding:3px;
+}
+
+.detailliste tr:first-child, .detailliste tr:last-child {
+    border-bottom:1px solid #777;
+}
+
+.detailliste h2 {
+    margin: 0;
+}
+
+.liste {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+.liste th {
+    font-family: 'Dosis', sans-serif;
+    font-size: 1.3em;
+    padding: 8px;
+    border-bottom: 2px solid #777;
+}
+
+.liste td
+{
+    padding: 8px;
+}
+
+.farbigeZeile
+{
+    background: #F8F8F2; 
+}
+
+.info {
+    background-color: #A6E22E;
+    color: #fff;
+    width: 1000px;
+    margin: 10px 0px;
+    padding-left: 12px;
+    line-height: 1.8em;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.error {
+    background-color: #AF2B12;
+    color: #fff;
+    width: 1000px;
+    margin: 10px 0px;
+    padding-left: 12px;
+    line-height: 1.8em;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.dashboardauswahl {
+    margin: 20px;
+}
+
+.dashboardauswahl img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 5px;
+}
+
+.dashboardauswahl figcaption {
+    text-align: center;
+    font-family: 'Dosis';
+    font-size: 1.3em;
+}
+
+.dashboardauswahl a {
+    color: #000;
+    text-decoration: none;
+}
+
+.dashboardauswahl a:hover{
+    opacity: 0.8;
+    color: #0066B4;
+}
+
+.dashboardauswahl a.green:hover {
+    color: #48822A;
+}
+
+.dashboardauswahl a.yellow:hover {
+    color: #EDA91B;
+}
+
+.dashboardauswahl a.red:hover {
+    color: #C2382F;
+}
