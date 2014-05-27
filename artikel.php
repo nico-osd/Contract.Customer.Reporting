@@ -1,3 +1,5 @@
+// Das ist mein erster Konflikt !
+
 <?php
 	$_SESSION['site'] = array('dashboard', 'artikel');
 
