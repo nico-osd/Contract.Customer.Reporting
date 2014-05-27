@@ -1,3 +1,5 @@
+// hi
+
 <?php
 	$_SESSION['site'] = array('dashboard', 'artikel');
 
