@@ -1,4 +1,4 @@
-// Das ist mein erster Konflikt !
+// hi, das ist mein erster Konflikt
 
 <?php
 	$_SESSION['site'] = array('dashboard', 'artikel');
