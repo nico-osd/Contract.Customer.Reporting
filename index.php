@@ -1,9 +1,6 @@
 <?php
 
-    $con = mysql_connect("localhost", "root", "hoppel");
-    mysql_select_db("mydb") or mysql_query("CREATE DATABASE mydb");  ;
-
-
+    include('inc/config/config.php');
 
     session_start();
 
@@ -39,19 +36,22 @@
                     $username = htmlspecialchars(mysql_real_escape_string($_POST['username'])); 
                     $password = htmlspecialchars($_POST['password']);
 
-                    checkLogin ($username, $password);
+                    $login = new CheckLogin($con);
+
+                    $login->checkEmployeeLogin($username, $password);
+
                 }
 
-                function checkLogin ($username, $password) {
-                    $result = mysql_query("select * from Mitarbeiter where Username='" . $username . "' and Passwort='" .$password. "'");
+                function checkLogin ($nachname, $password) {
+                    $result = mysql_query("select * from Mitarbeiter where nachname='" . $nachname . "' and password='" .$password. "'");
                     
                     if (mysql_num_rows($result) > 0) {
                         $row = mysql_fetch_assoc($result);
-                        $_SESSION['username'] = $username;
+                        $_SESSION['nachname'] = $nachname;
                         $_SESSION['vorname'] = $row['Vorname'];
-                        $_SESSION['nachname'] = $row['Nachname'];
-                        $_SESSION['rolle'] = $row['Rolle'];
-                        $_SESSION['id'] = $row['ID'];
+                        $_SESSION['abteilung'] = $row['abteilung'];
+                        $_SESSION['telefonnummer'] = $row['telefonnummer'];
+                        $_SESSION['id'] = $row['idMitarbeiter'];
                     } else {
                         echo '<div class="error">Username oder Passwort falsch!</div>';
                     }
