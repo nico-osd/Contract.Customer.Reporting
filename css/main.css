@@ -37,7 +37,7 @@ a {
 }
 
 #wrapper{
-    width: 1000px;
+    width: 960px;
     margin: auto;
 }
 
@@ -46,7 +46,7 @@ a {
 }
 
 #headeroverlay {
-    width: 1000px;
+    width: 960px;
     position: absolute;
     top: 0px;
 }
@@ -63,10 +63,11 @@ a {
 
 #content{
     background-color: white;
+    height: 50%;
 }
 
 #dashboard {
-    width: 960px;
+    width: 100%;
     margin: 0px auto;
 }
 
@@ -222,4 +223,9 @@ a {
 
 .dashboardauswahl a.red:hover {
     color: #C2382F;
+}
+
+#ust {
+    height:90%;
+    width: 100%;
 }

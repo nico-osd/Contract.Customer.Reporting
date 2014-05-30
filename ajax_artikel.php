@@ -1,6 +1,6 @@
 <?php
 
-	$con = mysql_connect("wi-projectdb.technikum-wien.at:3306", "SS13-BVZ2-FST-3", "DbPass4BVZ2-3");
+	$mysqli = mysql_connect("wi-projectdb.technikum-wien.at:3306", "SS13-BVZ2-FST-3", "DbPass4BVZ2-3");
     mysql_select_db("ss13-bvz2-fst-3");
 
 	$query = mysql_query("select * from Artikel where Name='" . $_POST['artikelname'] . "'");

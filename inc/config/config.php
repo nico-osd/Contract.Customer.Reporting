@@ -22,13 +22,13 @@ $db_name = 'ss14-bvz2-fst-2';
 
 $alt_host = '127.0.0.1';
 
-$con = new mysqli($host, $user, $pass, $db_name);
+$mysqli = new mysqli($host, $user, $pass, $db_name);
 
-if ($con->connect_errno) {
-    echo "Failed to connect to MySQL: (" . $con->connect_errno . ") " . $con->connect_error;
+if ($mysqli->connect_errno) {
+    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 
-    $con = new mysqli($alt_host, $user, $pass, $db_name, 3306);
+    $mysqli = new mysqli($alt_host, $user, $pass, $db_name, 3306);
 
-    if ($con->connect_errno)
-        echo "Failed to connect to MySQL: (" . $con->connect_errno . ") " . $con->connect_error;
+    if ($mysqli->connect_errno)
+        echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }

@@ -1,6 +1,5 @@
 <?php
     $_SESSION['site'] = array('login');
-
 ?>
 
 <form class="formular" action="index.php" method="post" name="loginform">
@@ -15,7 +14,7 @@
         </li>
         <li>
             <label for="password">Passwort:</label>
-            <input id="password" name="password" type="password" name="password" required />
+            <input id="password" name="password" type="password" required />
         </li>
         <li>
         	<button class="submit" name="login" type="submit">Login</button>
