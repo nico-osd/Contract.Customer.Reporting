@@ -16,7 +16,6 @@ function Header()
 	if($this->ProcessingTable)
 		$this->TableHeader();
 }
-
 function TableHeader()
 {
 	$this->SetFont('Arial','B',12);
