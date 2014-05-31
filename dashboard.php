@@ -40,7 +40,9 @@ echo '<div id="dashboard">';
 //	}
 //
 echo '<div class="left">
+
 			<figure class="dashboardauswahl">
+
 				<a href="index.php?section=artikel">
 					<img src="images/artikel.jpg" alt="Artikel">
 					<figcaption>Artikel</figcaption>
@@ -95,13 +97,25 @@ echo '<div class="left">
 					</a>
 				</figure>
 			</div>
-			<div class="left">
+                <div class="left">
 				<figure class="dashboardauswahl">
 					<a href="#">
 						<img src="images/feedback.png" alt="Feedback">
 						<figcaption>Feedback</figcaption>
 					</a>
 				</figure>
+                </div>
+                  <div class="left">
+				<figure class="dashboardauswahl">
+					<a href="index.php?section=Personalreporting">
+						<img src="images/feedback.png" alt="Personalreporting">
+						<figcaption>Personalreporting</figcaption>
+					</a>
+				</figure>
+                </div>
+
+
+
 			</div>';
 echo '<div class=left style= text-align:center;margin-top:100px;margin-left:1000px;><a href=fpdf17/FAQ.htm>FAQ | Impressium</a></div>';
 echo '</div>';

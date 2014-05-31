@@ -1,9 +1,12 @@
 <?php
 namespace controller;
 
-require $_SERVER['DOCUMENT_ROOT'] . "/Contract.Customer.Reporting/entities/CheckLogin.class.php";
-require $_SERVER['DOCUMENT_ROOT'] . "/Contract.Customer.Reporting/entities/Employee.class.php";
-require $_SERVER['DOCUMENT_ROOT'] . "/Contract.Customer.Reporting/inc/PasswordHash.php";
+// Ich werde mir eine schoender Loesung einfallen lassen.
+// bis dahin arbeite mal so.ok - noch etwas? nein danke
+
+require $_SERVER['DOCUMENT_ROOT'] . "/fst2/Contract.Customer.Reporting/entities/CheckLogin.class.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/fst2/Contract.Customer.Reporting/entities/Employee.class.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/fst2/Contract.Customer.Reporting/inc/PasswordHash.php";
 
 use entities\CheckLogin;
 use entities\Employee;

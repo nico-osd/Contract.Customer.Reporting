@@ -94,6 +94,9 @@ include('inc/logout.inc.php');
                     case 'feedback':
                         include('feedback.php');
                         break;
+                    case 'Personalreporting':
+                        include('Berichtswesen/Personalreporting.php');
+                        break;
 
                     case 'dashboard':
                         include('dashboard.php');
