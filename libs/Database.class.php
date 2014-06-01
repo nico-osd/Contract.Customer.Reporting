@@ -1,5 +1,5 @@
 <?php
-namespace entities;
+namespace libs;
 use mysqli;
 use mysqli_stmt;
 

@@ -8,7 +8,7 @@ use mysqli;
  * Date: 21.01.14
  * Time: 16:24
  */
-class Employee extends Database
+class Employee extends BaseEntity
 {
 
     /**

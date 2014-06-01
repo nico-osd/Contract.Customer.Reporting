@@ -2,7 +2,7 @@
     $_SESSION['site'] = array('login');
 ?>
 
-<form class="formular" action="index.php" method="post" name="loginform">
+<form class="formular" action="" method="post" name="loginform">
     <ul>
         <li>
              <h2>Login</h2>

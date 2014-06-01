@@ -1,15 +1,15 @@
 <?php
-namespace entities;
-use mysqli;
-require('Database.class.php');
-
 /**
  * Created by PhpStorm.
  * User: Nico
  * Date: 11.01.14
  * Time: 12:11
  */
-class CheckLogin extends Database
+
+namespace entities;
+use mysqli;
+
+class CheckLogin extends BaseEntity
 {
     /**
      * Erzeugt ein neues CheckLogin Objekt mit der

@@ -1,5 +1,5 @@
 <?php
-namespace util {
+namespace libs {
 #
 # Portable PHP password hashing framework.
 #

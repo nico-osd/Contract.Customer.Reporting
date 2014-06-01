@@ -1,19 +1,4 @@
 <?php
-namespace controller;
-
-// Ich werde mir eine schoender Loesung einfallen lassen.
-// bis dahin arbeite mal so.ok - noch etwas? nein danke
-
-require $_SERVER['DOCUMENT_ROOT'] . "/fst2/Contract.Customer.Reporting/entities/CheckLogin.class.php";
-require $_SERVER['DOCUMENT_ROOT'] . "/fst2/Contract.Customer.Reporting/entities/Employee.class.php";
-require $_SERVER['DOCUMENT_ROOT'] . "/fst2/Contract.Customer.Reporting/inc/PasswordHash.php";
-
-use entities\CheckLogin;
-use entities\Employee;
-use mysqli;
-use util\PasswordHash;
-use mysqli_result;
-
 /**
  * Created by PhpStorm.
  * User: Nico
@@ -21,7 +6,15 @@ use mysqli_result;
  * Time: 23:02
  */
 
-class LoginControll
+namespace controllers;
+
+use entities\CheckLogin;
+use entities\Employee;
+use mysqli;
+use libs\PasswordHash;
+
+
+class LoginController
 {
     private $checkLogin;
     private $employee;
