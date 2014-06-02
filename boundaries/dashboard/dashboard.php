@@ -56,7 +56,7 @@ $_SESSION['site'] = array('dashboard');
         <div class="dashboard-block">
             <figure class="dashboardauswahl">
                 <a href="index.php?section=neukunde">
-                    <img src="public/images/icons/kunde.png" alt="Kunde anlegen">
+                    <img src="public/images/icons/kundeanlegen.png" alt="Kunde anlegen">
                     <figcaption>Kunde anlegen</figcaption>
                 </a>
             </figure>
