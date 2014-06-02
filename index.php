@@ -147,7 +147,6 @@ foreach (glob(INCS . "*.inc.php") as $filename) {
             <a href="fpdf17/FAQ.htm">FAQ | Impressum</a>
         </div>
     </div>
-
 </div>
 <!-- end of site -->
 </body>
