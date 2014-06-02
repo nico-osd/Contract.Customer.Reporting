@@ -102,9 +102,12 @@
                         else {
                             //Hier werden die verschiedenen sections eingetragen == verschiedene HTML Seiten
                             switch($_GET['section']) {
+
+                                /* ALLGEMEINES */
                                 case "dashboard":
                                     require BOUNDARIES . "dashboard/dashboard.php";
                                     break;
+
 
                                 /* INCLUDES VON AUFTRAGSMANAGEMENT */
                                 case "artikel":
@@ -116,7 +119,7 @@
 
 
                                 /* INCLUDES VON BERICHTSWESEN */
-                                case 'Personalreporting':
+                                case 'personalreporting':
                                     include('Berichtswesen/Personalreporting.php');
                                     break;
 
@@ -142,7 +145,7 @@
             <!-- FOOTER, AUßERHALB VOM DIV "WRAPPER" -> FOOTER BLEIBT GANZ UNTEN  -->
             <div id="footer">
                 <div id="footer-content">
-                    <a href="fpdf17/FAQ.htm">FAQ | Impressum</a>
+                    <p>&copy 2014 CCR</p>
                 </div>
             </div>
 

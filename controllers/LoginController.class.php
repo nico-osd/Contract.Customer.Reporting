@@ -8,7 +8,6 @@
 
 namespace CCR\controllers;
 
-use CCR\entities\CheckLogin;
 use CCR\entities\Employee;
 use CCR\libs\PasswordHash;
 use CCR\libs\Session;
@@ -16,13 +15,11 @@ use CCR\libs\Session;
 
 class LoginController
 {
-    private $checkLogin;
     private $employee;
     private $t_hasher;
 
     public function __construct()
     {
-        //$this->checkLogin = new CheckLogin();
         $this->employee = new Employee();
         $this->t_hasher = new PasswordHash(8, FALSE);
     }
