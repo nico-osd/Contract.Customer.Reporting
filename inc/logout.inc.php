@@ -6,9 +6,9 @@
  * Time: 18:55
  */
 
+use CCR\libs\Session;
+
 if (isset($_GET['logout'])) {
-    $_SESSION = array();
-    setcookie("PHPSESSID", "", time() - 3600, "/");
-    session_destroy();
-    session_start();
+    Session::destroy();
+    header("Location: index.php");
 }

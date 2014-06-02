@@ -9,6 +9,8 @@
  *
  */
 
+namespace CCR\libs;
+
 class Session {
 
     /**
@@ -50,7 +52,7 @@ class Session {
      * Destroy Session
      */
     public static function destroy() {
-        //unset($_SESSION);
+        setcookie("PHPSESSID", "", time() - 3600, "/");
         session_destroy();
     }
 }

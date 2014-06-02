@@ -6,12 +6,12 @@
  * Time: 23:02
  */
 
-namespace controllers;
+namespace CCR\controllers;
 
-use entities\CheckLogin;
-use entities\Employee;
-use mysqli;
-use libs\PasswordHash;
+use CCR\entities\CheckLogin;
+use CCR\entities\Employee;
+use CCR\libs\PasswordHash;
+use CCR\libs\Session;
 
 
 class LoginController
@@ -20,40 +20,49 @@ class LoginController
     private $employee;
     private $t_hasher;
 
-    public function __construct(mysqli $mysqli)
+    public function __construct()
     {
-        $this->checkLogin = new CheckLogin($mysqli);
-        $this->employee = new Employee($mysqli);
+        //$this->checkLogin = new CheckLogin();
+        $this->employee = new Employee();
         $this->t_hasher = new PasswordHash(8, FALSE);
     }
 
-
+    /**
+     * @param $username
+     * @param $password
+     * @return bool
+     */
     public function checkLogin($username, $password)
     {
-        $result = $this->checkLogin->checkEmployeeLogin($username);
+        $result = $this->employee->getPasswordByEmployee($username);
 
-        while ($row = mysqli_fetch_assoc($result)) {
-            if ($this->t_hasher->CheckPassword($password, $row['password']))
+        if(!empty($result)) {
+            if($this->t_hasher->CheckPassword($password, $result[0]["password"])) {
+                $this->setSessionDetails($username);
                 return true;
+            }
         }
 
         return false;
     }
 
-    public function setSessionDetails($username)
+    private function setSessionDetails($username)
     {
+        //Employee data
         $result = $this->employee->getDetailsByEmployee($username);
 
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $_SESSION['username'] = $username;
-            $_SESSION['nachname'] = $row['nachname'];
-            $_SESSION['vorname'] = $row['vorname'];
-            $_SESSION['rolle'] = $row['abteilung'];
-            $_SESSION['telefonnummer'] = $row['telefonnummer'];
-            $_SESSION['id'] = $row['idMitarbeiter'];
-            return true;
-        }
-        return false;
+        //Session data festlegen
+        $sessionData = array(
+            "username" => $username,
+            "nachname" => $result[0]["nachname"],
+            "vorname" => $result[0]["vorname"],
+            "rolle" => $result[0]["abteilung"],
+            "telefonnummer" => $result[0]["telefonnummer"],
+            "id" => $result[0]["idMitarbeiter"]
+        );
+
+        //Session data setzen
+        Session::setMultiple($sessionData);
+
     }
 }

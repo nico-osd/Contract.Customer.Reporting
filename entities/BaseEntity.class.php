@@ -6,12 +6,15 @@
  * Time: 10:54
  */
 
-namespace entities;
-use libs\Database;
+namespace CCR\entities;
+
+use CCR\libs\Database;
 
 class BaseEntity extends Database {
 
-    public function __construct($link) {
-       parent::__construct($link);
+    protected $db;
+
+    public function __construct() {
+       $this->db = new Database(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
     }
 } 

@@ -1,45 +1,45 @@
 <?php
+    session_start();
+    use CCR\libs\Session;
 
-session_start();
+    require "config.php";
 
-require "config.php";
+    /**
+     * Funktion um automatisch alle Klassen von den angegeben Pfaden zu laden
+     *
+     * @param string $class Name der Datei die geladet werden soll
+     */
+    function autoload_class_multiple_directory($class) {
+        // Class directorys
+        $paths = array(
+            LIBS,
+            ENTITIES,
+            CONTROLLERS
 
-/**
- * Funktion um automatisch alle Klassen von den angegeben Pfaden zu laden
- *
- * @param string $class Name der Datei die geladet werden soll
- */
-function autoload_class_multiple_directory($class) {
-    // Class directorys
-    $paths = array(
-        LIBS,
-        ENTITIES,
-        CONTROLLERS
+        );
 
-    );
+        // Used for namespaces
+        $parts = explode('\\', $class);
+        $class =  end($parts);
 
-    // Used for namespaces
-    $parts = explode('\\', $class);
-    $class =  end($parts);
+        foreach($paths as $path) {
+            $file = sprintf("%s%s.class.php", $path, $class);
 
-    foreach($paths as $path) {
-        $file = sprintf("%s%s.class.php", $path, $class);
-
-        if(is_file($file)) {
-            require $file;
+            if(is_file($file)) {
+                require $file;
+            }
         }
     }
-}
 
-//Führt Funktion "autoload_class_multiple_directory" aus, ausgeführt wenn seite geladen wird
-spl_autoload_register('autoload_class_multiple_directory');
-
+    //Führt Funktion "autoload_class_multiple_directory" aus, ausgeführt wenn seite geladen wird
+    spl_autoload_register('autoload_class_multiple_directory');
 
 
-//Ladet automatisch alle Dateien vom Ordner inc/
-foreach (glob(INCS . "*.inc.php") as $filename) {
-    require $filename;
-}
+
+    //Ladet automatisch alle Dateien vom Ordner inc/
+    foreach (glob(INCS . "*.inc.php") as $filename) {
+        require $filename;
+    }
 
 ?>
 
@@ -48,111 +48,104 @@ foreach (glob(INCS . "*.inc.php") as $filename) {
     <html>
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <title>Felix Martin HIFI und Videostudios</title>
+            <title>Felix Martin Hi-Fi und Videostudios</title>
+
             <link rel="stylesheet" type="text/css" href="public/css/normalize.css"/>
-            <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+            <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
             <link rel="stylesheet" type="text/css" href="public/css/main.css"/>
             <link rel="stylesheet" type="text/css" href="public/css/form.css">
-            <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-            <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+            <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
             <script type="text/javascript" src="public/js/javascript.js"></script>
         </head>
     <body>
-        <div id='wrapper'>
+
+        <div id="site"> <!-- GANZE SEITE INKLUSIVE WRAPPER UND FOOTER -->
+            <div id='wrapper'> <!-- HEADER + CONTENT -->
+
+                <!-- HEADER -->
+                <header id="header">
+                    <!-- BREADCRUMB -->
+                    <div id="breadcrumb" class="clear">
+                        <h1>
+                            <a href="<?php echo URL; ?>">CCR</a>
+                            <?php
+                            if (Session::get("site")) {
+                                for ($i = 0; $i < count($_SESSION['site']); $i++) {
+                                    echo ' | <a href="index.php?section=' . $_SESSION['site'][$i] . '">' . $_SESSION['site'][$i] . '</a>';
+                                }
+                            }
+                            ?>
+                        </h1>
+                    </div>
+
+                    <!-- USER INFO, FALLS EINGELOGGT -->
+                    <?php if(Session::get("username")) : ?>
+                        <div id="userinfo">
+                            <p>Eingeloggt als, <?php echo Session::get("rolle") . " " . Session::get("vorname") . " " . Session::get("nachname"); ?></p>
+                            <p><a href="index.php?logout">Logout</a></p>
+                        </div>
+                    <?php endif; ?>
 
 
-        <header id="header"></header>
-        <div id="content">
-            <?php
+                </header>
 
-            if(!Session::get("username")) {
-                include(BOUNDARIES . "login/login.php");
-            }
-            else {
-                if(isset($_GET['section'])) {
-                    switch ($_GET['section']) {
-                        case 'login':
-                            include(BOUNDARIES . "login/login.php");
-                            break;
-
-                        case 'artikel':
-                            include('artikel.php');
-                            break;
-
-                        case 'angebote':
-                            include('angebote.php');
-                            break;
-
-                        case 'auftraege':
-                            include('auftraege.php');
-                            break;
-
-                        case 'rechnungen':
-                            include('rechnungen.php');
-                            break;
-
-                        case 'kunde':
-                            include('kunde.php');
-                            break;
-
-                        case 'USt':
-                            include('USt.php');
-                            break;
-
-                        case 'kundenanfrage':
-                            include('kundenanfrage.php');
-                            break;
-
-                        case 'feedback':
-                            include('feedback.php');
-                            break;
-                        case 'Personalreporting':
-                            include('Berichtswesen/Personalreporting.php');
-                            break;
-
-                        case 'dashboard':
-                            include(BOUNDARIES . "dashboard/dashboard.php");
-                            break;
-
-                        default:
-                            include(BOUNDARIES . "dashboard/dashboard.php");
-                            break;
-                    }
-                }
-                else {
-                    include(BOUNDARIES . "dashboard/dashboard.php");
-                }
-            }
-
-            ?>
-        </div>
-
-
-        <div id="headeroverlay">
-            <div id="breadcrumb" class="clear">
-                <h1>
-                    <a href="index.php">CCR</a>
+                <!-- CONTENT -->
+                <div id="content">
                     <?php
-                    if (Session::get("site")) {
-                        for ($i = 0; $i < count($_SESSION['site']); $i++) {
-                            echo ' | <a href="index.php?section=' . $_SESSION['site'][$i] . '">' . $_SESSION['site'][$i] . '</a>';
+
+                    if(isset($_GET['section'])) {
+                        if(!Session::get("username")) {
+                            require BOUNDARIES . "login/login.php";
+                        }
+                        else {
+                            //Hier werden die verschiedenen sections eingetragen == verschiedene HTML Seiten
+                            switch($_GET['section']) {
+                                case "dashboard":
+                                    require BOUNDARIES . "dashboard/dashboard.php";
+                                    break;
+
+                                /* INCLUDES VON AUFTRAGSMANAGEMENT */
+                                case "artikel":
+                                    require BOUNDARIES . "article/article.php";
+                                    break;
+
+                                /* INCLUDES VON KUNDENBEZIEHUNGSMANAGEMENT */
+
+
+
+                                /* INCLUDES VON BERICHTSWESEN */
+                                case 'Personalreporting':
+                                    include('Berichtswesen/Personalreporting.php');
+                                    break;
+
+                                /* DEFAULT */
+                                default:
+                                    include(BOUNDARIES . "dashboard/dashboard.php");
+                                    break;
+                            }
+                        }
+                    }
+                    else {
+                        if(Session::get("username")) {
+                            require BOUNDARIES . "dashboard/dashboard.php";
+                        }
+                        else {
+                            require BOUNDARIES . "login/login.php";
                         }
                     }
                     ?>
-                </h1>
+                </div> <!-- end of content -->
+            </div> <!-- end of wrapper -->
+
+            <!-- FOOTER, AUßERHALB VOM DIV "WRAPPER" -> FOOTER BLEIBT GANZ UNTEN  -->
+            <div id="footer">
+                <div id="footer-content">
+                    <a href="fpdf17/FAQ.htm">FAQ | Impressum</a>
+                </div>
             </div>
-            <?php
 
-            if (Session::get("username")) {
-                echo '<div id="userinfo"><a href="index.php?logout">Eingeloggt als ' . $_SESSION['rolle'] . ' ' . $_SESSION['vorname'] . ' ' . $_SESSION['nachname'] . '</a></div>';
-            }
-
-            if(isset($_GET['logout'])) {
-                header("Location: index.php");
-            }
-
-            ?>
-        </div>
-    </div>
+        </div> <!-- end of site -->
     </body>
 </html>

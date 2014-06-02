@@ -1,5 +1,5 @@
 <?php
-namespace libs {
+namespace CCR\libs; {
 #
 # Portable PHP password hashing framework.
 #

@@ -6,14 +6,21 @@
  * Time: 18:50
  */
 
+use CCR\controllers\LoginController;
+
 if (isset($_POST['login'])) {
-    $username = htmlspecialchars($mysqli->escape_string($_POST['username']));
+    $username = htmlspecialchars($_POST['username']);
     $password = htmlspecialchars($_POST['password']);
 
-    $login = new \controllers\LoginController($mysqli);
+    $login = new LoginController();
 
-    $success = $login->checkLogin($username, $password);
+    $result = $login->checkLogin($username, $password);
 
-    if($success)
-        $login->setSessionDetails($username);
+    if(!$result) {
+        $loginErrors = "Username/Passwort ist falsch!";
+    }
+    else {
+        header("Location: index.php?section=dashboard");
+    }
+
 }

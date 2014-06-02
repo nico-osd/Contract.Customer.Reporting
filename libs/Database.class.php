@@ -1,104 +1,143 @@
 <?php
-namespace libs;
-use mysqli;
-use mysqli_stmt;
-
 /**
  * Created by PhpStorm.
- * User: Nico Henglmueller
- * Date: 17.12.13
- * Time: 17:27
+ * User: fabiangrutsch
+ * Date: 01.05.14
+ * Time: 18:10
+ *
+ * package libs/
+ *
  */
-class Database {
-    /**
-     * @var bool Debug Flag um Abgfragen zu debuggen
-     * NICHT UEBERSCHREIBEN !
-     */
-    public static $DEBUG = FALSE;
+
+namespace CCR\libs;
+use PDO, PDOException;
+
+class Database extends PDO {
 
     /**
-     * @var mysqli Referenz zur Datenbank
-     */
-    private $mysqli;
-
-    /**
-     * Erzeugt ein neues Database Objekt mit der uebergebenen
-     * mysqli Referenz.
+     * Initializes Database connection
      *
-     * @param mysqli $link der Link zur Datenbank (mysqli Objekt)
+     * @param string $DB_TYPE The type of the database, ex: mysqli
+     * @param string $DB_HOST The hostname of the database, ex: localhost
+     * @param string $DB_NAME The name of the database
+     * @param string $DB_USER The username for the database
+     * @param string $DB_PASS The password for the database
      */
-    public function __construct(mysqli $link)
-    {
-        $this->mysqli = $link;
+    public function __construct($DB_TYPE, $DB_HOST, $DB_NAME, $DB_USER, $DB_PASS) {
+
+        try {
+            parent::__construct($DB_TYPE . ":host=" . $DB_HOST . ";dbname=" . $DB_NAME . ";charset=utf8", $DB_USER, $DB_PASS);
+        }
+        catch(PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        //parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     /**
-     * Erzeugt ein neues Statement Objekt aus
-     * dem uebergebenen Query und gibt dies zurueck.
+     * Prepared select statement
      *
-     * @param $query ein Query (SELECT * FROM X WHERE y = ?)
-     * @return mysqli_stmt ein neues stmt Objekt
+     * EXAMPLE USAGE:
+     * $stmt = "SELECT username, password FROM user WHERE username = :un AND password = :pw";
+     * $data = array("un" => "myname", "pw" => "mypassword");
+     * $this->db->select($stmt, $data);
+     *
+     * @param string $sql An SQL statement
+     * @param array $array Paramters to bind
+     * @param mixed $fetchMode A PDO Fetch mode
+     * @return array|mixed
      */
-    public function getStmt($query)
-    {
-        $stmt = $this->mysqli->prepare($query);
-        if ($stmt == false)
-            die('prepare() failed: ' . htmlspecialchars($this->mysqli->error));
+    public function select($sql, $array = array(), $fetchMode = PDO::FETCH_ASSOC) {
+        $sth = $this->prepare($sql);
 
-        return $stmt;
+        foreach($array as $key => $value) {
+            $sth->bindValue("$key", $value);
+        }
+
+        $sth->execute();
+        return $sth->fetchAll($fetchMode);
     }
+
 
     /**
-     * Fuehrt das uebergebene Query aus und gibt ein resultset zurueck.
-     * Nuetzlich bei select Queries um ueber das result zu iterieren.
+     * Prepared insert statement
      *
-     * @link http://www.php.net/manual/en/class.mysqli-result.php
-     * @param mysqli_stmt $stmt
-     * @return bool|mysqli_result
+     * EXAMPLE USAGE:
+     * $table = "user";
+     * $data = array("username" => "max", "password" => "mustermann");
+     * $this->db->insert($table, $data);
+     *
+     * @param string $table The name of table to insert into
+     * @param array $data Associative array -> includes fieldNames and fieldValues to insert
      */
-    function executeWithResultSet(mysqli_stmt $stmt)
-    {
-        $stmt->execute();
-        $success = $stmt->get_result();
+    public function insert($table, $data) {
+        ksort($data);
 
-        if (!$success)
-            die('mysqli_stmt_get_result failed: ' . htmlspecialchars($this->mysqli->error));
+        $fieldNames = implode("`, `", array_keys($data));
+        $fieldValues = ":" . implode(", :", array_keys($data));
 
+        $sth = $this->prepare("INSERT INTO $table (`$fieldNames`)
+            VALUES ($fieldValues)");
 
-        $stmt->fetch();
-        $stmt->close();
+        foreach($data as $key => $value) {
+            $sth->bindValue(":$key", $value);
+        }
 
-        return $success;
+        $sth->execute();
     }
+
 
     /**
-     * Fuehrt das angegebene Query aus und gibt den
-     * Erfolg bzw. Miserfolg zurueck
-     * (TRUE = Erfolg, FALSE = Miserfolg)
+     * Prepared update statement
      *
-     * @link http://php.net/manual/en/mysqli-stmt.execute.php
-     * @param mysqli_stmt $stmt das auszufuehrende Statement
-     * @return bool true wenn das Query erfolgreich ausgefuehrt wurde
-     *         false wenn das Query nicht erfolgreich war.
+     * EXAMPLE USAGE:
+     * $table = "user";
+     * $data = array("username" => "max", "password" => "mustermann");
+     * $this->db->update($table, $data, "username = my_old_name");
+     *
+     *
+     * @param string $table The name of table to insert into
+     * @param array $data associative array
+     * @param string $where Where clause in the query, ex: id = ##
      */
-    function execute(mysqli_stmt $stmt)
-    {
-        $result = $stmt->execute();
-        if (!$result)
-            die('mysqli_stmt_execute failed: ' . mysqli_error($this->mysqli));
-        $stmt->fetch();
-        $stmt->close();
+    public function update($table, $data, $where) {
+        //Not necessary
+        ksort($data);
 
-        return $result;
+        $fieldDetails = null;
+        foreach($data as $key => $value) {
+            $fieldDetails .= "`$key`=:$key,";
+        }
+
+        $fieldDetails = rtrim($fieldDetails, ",");
+
+        $sth = $this->prepare("UPDATE $table SET $fieldDetails WHERE $where");
+
+        foreach($data as $key => $value) {
+            $sth->bindValue(":$key", $value);
+        }
+
+        $sth->execute();
     }
+
 
     /**
-     * Gibt die zuletzt generierte ID zurueck.
+     * Prepared delete statement
      *
-     * @return mixed die zuletzt generierte id.
+     * EXAMPLE USAGE:
+     * $table = "user";
+     * $this->db->delete($table, "user_id = 5");
+     *
+     *
+     * @param string $table The name of table to delete from
+     * @param string $where Where clause in the query, ex: id = ##
+     * @param integer $limit (Optional) Limit the number of deletes, to prevent multiple deletings
+     * @return integer Affected Rows
      */
-    function getLastGeneratedId()
-    {
-        return $this->mysqli->insert_id;
+    public function delete($table, $where, $limit = 1) {
+        return $this->exec("DELETE FROM $table WHERE $where LIMIT $limit");
+
     }
+
 }

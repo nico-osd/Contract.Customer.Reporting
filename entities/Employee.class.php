@@ -1,66 +1,54 @@
 <?php
-namespace entities;
-
-use mysqli;
 /**
  * Created by PhpStorm.
  * User: Nico
  * Date: 21.01.14
  * Time: 16:24
  */
-class Employee extends BaseEntity
-{
 
-    /**
-     * Erzeubt eine neue Employee Entity um die Eigenschaften
-     * eines Mitarbeiters aus der Datenbank abzufragen.
-     *
-     * @param mysqli $link Datenbankverbindungsobjekt
-     */
-    public function __construct(mysqli $link)
-    {
-        // uebergeben an den Konstruktor in Database
-        parent::__construct($link);
-    }
+namespace CCR\entities;
+
+class Employee extends BaseEntity {
 
     /**
      * Erzeugt einen Query um die Attribute eines Mitarbeiters abzufragen.
      * Ein Mitarbeiter wird durch seinen usernamen identifiziert. Es wird
-     * das Resultat oder False zureuckgegeben.
+     * das Resultat zureuckgegeben.
      *
-     * @param $username username des Mitarbeiters
-     * @return bool|mysqli_result false falls der Query fehlgeschlagen ist
-     *         mysqli_result wenn der Query erfolgreich ausgefuehrt wurde.
+     * @param string $username Username des Mitarbeiters
+     * @return mixed Entweder ein array mit daten oder ein leerer array falls nichts gefunden wurde
      */
-    function getDetailsByEmployee($username)
-    {
+    public function getDetailsByEmployee($username) {
+        //SQL statement
+        $stmt = "SELECT username, nachname, vorname, abteilung, idMitarbeiter, telefonnummer FROM mitarbeiter
+        WHERE username = :username";
 
-        $query = $this->getDetailsByEmployeeQuery();
+        //Data for select query
+        $data = array(
+            "username" => $username
+        );
 
-        $stmt = $this->getStmt($query);
-
-        $stmt->bind_param('s', $username);
-
-        $result = $this->executeWithResultSet($stmt);
-
-        if (!$result) {
-            if (parent::$DEBUG) {
-                echo '<br/>Employee.<strong>(getDetailsByEmployee):<strong> could select information.';
-            }
-            return false;
-        }
-
-        return $result;
+        //Return selected data
+        return $this->db->select($stmt, $data);
     }
 
     /**
-     * Gibt den Query fuer die Datenbankabfrage der Daten eines bestimmten
-     * (durch den Usernamen identifizierten) Mitarbeiter zurueck.
+     * Selektiert das Passwort des angegebenen Benutzers und
+     * returned ein array
      *
-     * @return string der SELECT Query fuer den Mitarbeiter.
+     * @param string $username Username des Mitarbeiters
+     * @return mixed Entweder ein array mit daten oder ein leerer array falls nichts gefunden wurde
      */
-    function getDetailsByEmployeeQuery()
-    {
-        return 'SELECT username, nachname, vorname, abteilung, idMitarbeiter, telefonnummer  FROM mitarbeiter WHERE username = ?';
+    public function getPasswordByEmployee($username) {
+        //SQL statement
+        $stmt = "SELECT password FROM mitarbeiter WHERE username = :username";
+
+        //Data for select query
+        $data = array(
+            "username" => $username
+        );
+
+        //Return selected data
+        return $this->db->select($stmt, $data);
     }
 }

@@ -36,6 +36,12 @@ define("BOUNDARIES", "boundaries/");
 define("INCS", "inc/");
 define("URL", $full_url);
 
+define("DB_TYPE", "mysql");
+define("DB_HOST", "wi-projectdb.technikum-wien.at");
+define("DB_NAME", "ss14-bvz2-fst-2");
+define("DB_USER", "ss14-bvz2-fst-2");
+define("DB_PASS", "DbPass4BVZ2-2");
+
 
 $host = 'wi-projectdb.technikum-wien.at';
 $user = 'ss14-bvz2-fst-2';
@@ -44,6 +50,7 @@ $db_name = 'ss14-bvz2-fst-2';
 
 // ini_set('display_errors', 0);
 
+/*
 // alternatives:
 $alt_host = '127.0.0.1';
 
@@ -56,4 +63,4 @@ if ($mysqli->connect_errno) {
 
     if ($mysqli->connect_errno)
         echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-}
+}*/

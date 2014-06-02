@@ -21,10 +21,11 @@ map0=(  [foreground     ]='#F8F8F2'     [background     ]='#272822'
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic);
 @import url(http://fonts.googleapis.com/css?family=Dosis:700);
 
-body {
+html, body {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px;
     color: #000;
+    height: 100%;
 }
 
 h1 {
@@ -36,19 +37,18 @@ a {
     text-decoration: none;
 }
 
+#site {
+    min-height: 100%;
+    position: relative;
+}
+
 #wrapper{
-    width: 960px;
+    width: 1024px;
     margin: auto;
 }
 
 #header{
     height: 5em;
-}
-
-#headeroverlay {
-    width: 960px;
-    position: absolute;
-    top: 0px;
 }
 
 #breadcrumb {
@@ -58,16 +58,24 @@ a {
 
 #userinfo {
     float: right;
-    margin-top: 2.5em;
-} 
+    height: 100%;
+    padding-top: 25px;
+}
+
+#userinfo p {
+    margin: 0;
+    text-align: right;
+}
 
 #content{
     background-color: white;
-    height: 50%;
+    height: 100%;
+    padding-bottom: 70px;
 }
 
 #dashboard {
     width: 100%;
+    height: 100%;
     margin: 0px auto;
 }
 
@@ -189,6 +197,7 @@ a {
 
 .dashboardauswahl {
     margin: 20px;
+
 }
 
 .dashboardauswahl img {
@@ -229,3 +238,49 @@ a {
     height:90%;
     width: 100%;
 }
+
+
+
+/*
+************************** ALLE NEUEN CSS DEFINITIONEN == CSS VON CCR **************************
+*/
+
+
+/* ERROR MESSAGES */
+.error-messages {
+    color: red;
+}
+
+/* FOOTER */
+#footer {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    bottom: 0;
+    left: 0;
+    background-color: #519FD8;
+    margin-top: 20px;
+}
+
+#footer-content {
+    position: relative;
+    width: 1024px;
+    margin: auto;
+    padding-top: 15px;
+}
+
+#footer a {
+    color: #F8F8F2;
+}
+
+/* DASHBOARD REIHE VON AUSWAHLBLÖCKEN */
+.row {
+    height: 100%;
+    text-align: left;
+}
+
+/* DASHBOARD AUSWAHL BLOCK */
+.dashboard-block {
+    display: inline-block;
+}
+
