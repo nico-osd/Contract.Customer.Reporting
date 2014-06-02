@@ -8,7 +8,6 @@
 
 namespace CCR\controllers;
 
-use CCR\entities\CheckLogin;
 use CCR\entities\Employee;
 use CCR\libs\PasswordHash;
 use CCR\libs\Session;

@@ -269,8 +269,9 @@ a {
     padding-top: 15px;
 }
 
-#footer a {
+#footer p {
     color: #F8F8F2;
+    margin: 0;
 }
 
 /* DASHBOARD REIHE VON AUSWAHLBLÖCKEN */
