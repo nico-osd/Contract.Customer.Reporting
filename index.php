@@ -61,6 +61,7 @@ foreach (glob(INCS . "*.inc.php") as $filename) {
 </head>
 <body>
 
+
 <div id="site"> <!-- GANZE SEITE INKLUSIVE WRAPPER UND FOOTER -->
     <div id='wrapper'> <!-- HEADER + CONTENT -->
 
@@ -83,10 +84,13 @@ foreach (glob(INCS . "*.inc.php") as $filename) {
             <!-- USER INFO, FALLS EINGELOGGT -->
             <?php if (Session::get("username")) : ?>
                 <div id="userinfo">
-                    als: <?php echo Session::get("vorname") . " " . Session::get("nachname") . ", Abteilung: " . Session::get("rolle"); ?></p>                        </div>
+                    <p>Eingeloggt
+                        als, <?php echo Session::get("rolle") . " " . Session::get("vorname") . " " . Session::get("nachname"); ?></p>
+
+                    <p><a href="index.php?logout">Logout</a></p>
+                </div>
             <?php endif; ?>
 
-            <p><a href="index.php?logout">Logout</a></p>
 
         </header>
 
