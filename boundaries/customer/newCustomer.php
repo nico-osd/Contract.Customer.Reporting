@@ -8,4 +8,4 @@
 
 $_SESSION['site'] = array('dashboard', 'Kunde anlegen');
 ?>
-
+<form class="formular" action="index.php" method="post"
