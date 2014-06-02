@@ -8,7 +8,8 @@
 
 namespace CCR\entities;
 
-class Employee extends BaseEntity {
+class Employee extends BaseEntity
+{
 
     /**
      * Erzeugt einen Query um die Attribute eines Mitarbeiters abzufragen.
@@ -18,17 +19,17 @@ class Employee extends BaseEntity {
      * @param string $username Username des Mitarbeiters
      * @return mixed Entweder ein array mit daten oder ein leerer array falls nichts gefunden wurde
      */
-    public function getDetailsByEmployee($username) {
-        //SQL statement
-        $stmt = "SELECT username, nachname, vorname, abteilung, idMitarbeiter, telefonnummer FROM mitarbeiter
-        WHERE username = :username";
+    public function getDetailsByEmployee($username)
+    {
+        // SQL statement
+        $stmt = $this->getDetailsByEmployeeQuery();
 
-        //Data for select query
+        // Data for select query
         $data = array(
             "username" => $username
         );
 
-        //Return selected data
+        // Return selected data
         return $this->db->select($stmt, $data);
     }
 
@@ -39,16 +40,28 @@ class Employee extends BaseEntity {
      * @param string $username Username des Mitarbeiters
      * @return mixed Entweder ein array mit daten oder ein leerer array falls nichts gefunden wurde
      */
-    public function getPasswordByEmployee($username) {
-        //SQL statement
-        $stmt = "SELECT password FROM mitarbeiter WHERE username = :username";
+    public function getPasswordByEmployee($username)
+    {
+        // SQL statement
+        $stmt = $this->getPasswordByEmployeeQuery();
 
-        //Data for select query
+        // Data for select query
         $data = array(
             "username" => $username
         );
 
-        //Return selected data
+        // Return selected data
         return $this->db->select($stmt, $data);
+    }
+
+    public function getPasswordByEmployeeQuery()
+    {
+        return "SELECT password FROM mitarbeiter WHERE username = :username";
+    }
+
+    public function getDetailsByEmployeeQuery()
+    {
+        return "SELECT username, nachname, vorname, abteilung, idMitarbeiter, telefonnummer FROM mitarbeiter
+        WHERE username = :username";
     }
 }
