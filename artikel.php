@@ -1,6 +1,6 @@
-// hi, das ist mein erster Konflikt
-
 <?php
+
+
 	$_SESSION['site'] = array('dashboard', 'artikel');
 
     if (isset($_POST['speichernArtikel'])) {
