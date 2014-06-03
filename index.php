@@ -146,7 +146,7 @@ foreach (glob(INCS . "*.inc.php") as $filename) {
     <!-- FOOTER, AUßERHALB VOM DIV "WRAPPER" -> FOOTER BLEIBT GANZ UNTEN  -->
     <div id="footer">
         <div id="footer-content">
-            <a href="fpdf17/FAQ.htm">FAQ | Impressum</a>
+            <p>&copy 2014 CCR</p>
         </div>
     </div>
 
