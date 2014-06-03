@@ -1,6 +1,7 @@
 <?php
 //Für Breadcrumb
-$_SESSION['site'] = array('login');
+use CCR\libs\Cookie;
+Cookie::setBreadcrumbCookie(array("login"));
 ?>
 
 

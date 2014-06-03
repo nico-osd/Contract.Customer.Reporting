@@ -1,7 +1,7 @@
 <?php
-
-$_SESSION['site'] = array('dashboard');
-
+//Für Breadcrumb
+use CCR\libs\Cookie;
+Cookie::setBreadcrumbCookie(array("dashboard"));
 ?>
 
 <div id="dashboard">

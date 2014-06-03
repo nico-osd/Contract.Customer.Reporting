@@ -1,3 +1,22 @@
+
+/* NEUES JAVASCRIPT VON CCR */
+
+/**
+ * Breadcrumb Inhalt setzen, Daten werden vom Cookie "breadcrumb" gelesen
+ */
+$(function(){
+    $("#breadcrumb h1").html($.cookie("breadcrumb"));
+});
+
+
+
+
+
+
+
+
+/* ALTER JAVASCRIPT, NOTWENDIG?????? */
+
 function checkDate(form) {
     var dateFormat = "{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])";
     if (form.lieferung.checked && !form.lieferdatum.value.match(dateFormat)) {
@@ -134,3 +153,7 @@ function setRequiredArtikel() {
 $(function () {
     $("#comboboxArtikel, #comboboxKunde, #comboboxMitarbeiter").combobox();
 });
+
+
+
+

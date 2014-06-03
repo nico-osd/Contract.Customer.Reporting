@@ -41,6 +41,7 @@ foreach (glob(INCS . "*.inc.php") as $filename) {
     require $filename;
 }
 
+
 ?>
 
 
@@ -57,6 +58,7 @@ foreach (glob(INCS . "*.inc.php") as $filename) {
 
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="public/js/jquery-cookie.js"></script>
     <script type="text/javascript" src="public/js/javascript.js"></script>
 </head>
 <body>
@@ -69,16 +71,7 @@ foreach (glob(INCS . "*.inc.php") as $filename) {
         <header id="header">
             <!-- BREADCRUMB -->
             <div id="breadcrumb" class="clear">
-                <h1>
-                    <a href="<?php echo URL; ?>">CCR</a>
-                    <?php
-                    if (Session::get("site")) {
-                        for ($i = 0; $i < count($_SESSION['site']); $i++) {
-                            echo ' | <a href="index.php?section=' . $_SESSION['site'][$i] . '">' . $_SESSION['site'][$i] . '</a>';
-                        }
-                    }
-                    ?>
-                </h1>
+                <h1></h1>
             </div>
 
             <!-- USER INFO, FALLS EINGELOGGT -->
@@ -156,7 +149,6 @@ foreach (glob(INCS . "*.inc.php") as $filename) {
         </div>
     </div>
 
-</div>
-<!-- end of site -->
+</div><!-- end of site -->
 </body>
 </html>

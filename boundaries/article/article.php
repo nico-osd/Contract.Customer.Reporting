@@ -1,7 +1,7 @@
 <?php
-
 //Für Breadcrumb
-$_SESSION['site'] = array('dashboard', 'artikel');
+use CCR\libs\Cookie;
+Cookie::setBreadcrumbCookie(array("dashboard", "artikel"));
 ?>
 
 <p>Ich bin die Artikel Seite!</p>
