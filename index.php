@@ -94,7 +94,8 @@ foreach (glob(INCS . "*.inc.php") as $filename) {
             if (isset($_GET['section'])) {
                 if (!Session::get("username")) {
                     require BOUNDARIES . "login/login.php";
-                } else {
+                }
+                else {
                     //Hier werden die verschiedenen sections eingetragen == verschiedene HTML Seiten
                     switch ($_GET['section']) {
                         case "dashboard":
