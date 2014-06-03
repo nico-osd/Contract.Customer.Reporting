@@ -13,7 +13,7 @@ Cookie::setBreadcrumbCookie(array("dashboard", "Kunde anlegen"));
 $customergroups = new \CCR\entities\Customergroups();
 ?>
 <div>
-    <form class="formular" action="index.php?section=newCustomer" method="post" id="customerform" name="customerform">
+    <form class="formular" action="index.php" method="post" id="customerform" name="customerform">
         <ul>
             <li>
                 <h2>Kunde anlegen</h2>
@@ -100,7 +100,7 @@ $customergroups = new \CCR\entities\Customergroups();
                 </ul>
             </li>
         </ul>
-        <button class="submit left buttonIEdisable" style="margin-top: 10px; margin-bottom: 2em;" name="saveCustomer"
+        <button class="submit buttonIEdisable" style="margin-top: 10px; margin-bottom: 2em;" name="saveCustomer"
                 type="submit" form="customerform">
             Speichern
         </button>
