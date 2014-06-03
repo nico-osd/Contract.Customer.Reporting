@@ -55,7 +55,7 @@ Cookie::setBreadcrumbCookie(array("dashboard"));
     <div class="row">
         <div class="dashboard-block">
             <figure class="dashboardauswahl">
-                <a href="index.php?section=kundeanlegen">
+                <a href="index.php?section=<?php echo htmlspecialchars("Kunde anlegen"); ?>">
                     <img src="public/images/icons/kundeanlegen.png" alt="Kunde anlegen">
                     <figcaption>Kunde anlegen</figcaption>
                 </a>

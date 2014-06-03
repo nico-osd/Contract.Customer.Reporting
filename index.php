@@ -109,7 +109,7 @@ foreach (glob(INCS . "*.inc.php") as $filename) {
                         /* INCLUDES VON KUNDENBEZIEHUNGSMANAGEMENT */
 
                         /* INCLUDES VON KUNDENBEZIEHUNGSMANAGEMENT */
-                        case "kundeanlegen":
+                        case htmlspecialchars("Kunde anlegen"):
                             require BOUNDARIES . "customer/newCustomer.php";
                             break;
 

@@ -6,7 +6,9 @@
  * Time: 19:35
  */
 
-$_SESSION['site'] = array('dashboard', 'Kunde anlegen');
+use CCR\libs\Cookie;
+
+Cookie::setBreadcrumbCookie(array("dashboard", "Kunde anlegen"));
 
 $customergroups = new \CCR\entities\Customergroups();
 ?>
