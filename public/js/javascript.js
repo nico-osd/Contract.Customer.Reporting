@@ -15,7 +15,9 @@ $(function(){
 
 
 
-/* ALTER JAVASCRIPT, NOTWENDIG?????? */
+
+
+/* ALTEs JAVASCRIPT, NOTWENDIG?????? */
 
 function checkDate(form) {
     var dateFormat = "{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])";

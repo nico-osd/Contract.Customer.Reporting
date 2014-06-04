@@ -103,8 +103,14 @@ foreach (glob(INCS . "*.inc.php") as $filename) {
                             break;
 
                         /* INCLUDES VON AUFTRAGSMANAGEMENT */
-                        case "artikel":
-                            require BOUNDARIES . "article/article.php";
+                        case "Artikel":
+                            require BOUNDARIES . "article/index.php";
+                            break;
+                        case htmlspecialchars("Artikel anlegen"):
+                            require BOUNDARIES . "article/createArticle.php";
+                            break;
+                        case htmlspecialchars("Artikel suchen"):
+                            require BOUNDARIES . "article/searchArticle.php";
                             break;
 
                         /* INCLUDES VON KUNDENBEZIEHUNGSMANAGEMENT */
