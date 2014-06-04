@@ -269,6 +269,85 @@ a {
 
 
 
-#dashboard-accordion .ui-accordion-content {
-    padding: 0;
+/*
+*Das CSS gilt jetzt für alle Akkordions, es ist aber auch für einzelne Divs anpassbar
+*/
+
+/*
+* Border des aufgeklappten Contents
+*/
+ .ui-widget-content {
+    border: none !important ;
+
 }
+/*
+* Kleine Pfeile (Icon) entfernen
+*NICHT LÖSCHEN
+*/
+
+ .ui-icon {
+    width: 0px !important;
+    height: 16px !important;
+}
+
+/*
+*Margin ändert Abstand Zwischen den divs  (geht nicht hier?)
+*/
+ .ui-accordion .ui-accordion-header {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    margin-top: 50px !important;
+    padding: .5em .5em .5em .7em;
+    min-height: 0; /* support: IE7 */
+}
+
+
+/*
+*Diese Klasse ist für die Borders der Accordions UND die HintergrundFarbe des Acc
+*NICHT LÖSCHEN
+*/
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+    border: none !important ;
+    background:none !important;
+    background: #e6e6e6 url(images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x;
+    font-weight: normal;
+    color: #555555;
+}
+
+/*
+*Hintergrundfarbe des gewählten SectionHeaders
+*NICHT LÖSCHEN
+*/
+.ui-progressbar .ui-progressbar-overlay {
+    background:none !important;
+     /* background: url("images/animated-overlay.gif"); */
+    height: 100%;
+    filter: alpha(opacity=25);
+    opacity: 0.25;
+}
+
+/*
+*Hintergrundfarbe eines SectionHeaders welcher über den gerade gehovert wird
+*NICHT LÖSCHEN
+*/
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+    background:none !important;
+    border: 1px solid #999999;
+    background: #dadada url(images/ui-bg_glass_75_dadada_1x400.png) 50% 50% repeat-x;
+    font-weight: normal;
+    color: #212121;
+}
+
+
+
+
+

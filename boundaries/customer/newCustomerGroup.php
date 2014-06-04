@@ -15,7 +15,9 @@ Cookie::setBreadcrumbCookie(array("dashboard", "Kundengruppen"));
 
 <script>
     $(function() {
-        $( "#accordion" ).accordion();
+        $( "#accordion" ).accordion({        heightStyle: "content",
+            collapsible: true,
+            active: 0});
     });
 </script>
 <div id = "accordion" >
@@ -67,5 +69,3 @@ Cookie::setBreadcrumbCookie(array("dashboard", "Kundengruppen"));
     </p>
 </div>
 </div >
-
-?>
