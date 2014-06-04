@@ -12,36 +12,54 @@ Cookie::setBreadcrumbCookie(array("dashboard"));
     <div class="row">
         <div class="dashboard-block">
             <figure class="dashboardauswahl">
-                <a href="index.php?section=artikel">
+                <a href="index.php?section=Artikel">
                     <img src="public/images/icons/artikel.jpg" alt="Artikel">
-                    <figcaption>Artikel</figcaption>
+                    <figcaption>Artikel verwalten</figcaption>
                 </a>
             </figure>
         </div>
 
         <div class="dashboard-block">
             <figure class="dashboardauswahl">
-                <a href="index.php?section=angebote">
-                    <img src="public/images/icons/angebot.jpg" alt="Angebote">
-                    <figcaption>Angebote</figcaption>
+                <a href="index.php?section=Lieferantenkonditionen">
+                    <img src="public/images/icons/angebot.jpg" alt="Lieferantenkonditionen">
+                    <figcaption>Lieferantenkonditionen verwalten</figcaption>
                 </a>
             </figure>
         </div>
 
         <div class="dashboard-block">
             <figure class="dashboardauswahl">
-                <a href="index.php?section=auftraege">
-                    <img src="public/images/icons/auftrag.jpg" alt="Auftrage">
-                    <figcaption>Auftraege</figcaption>
+                <a href="index.php?section=Kundenangebote">
+                    <img src="public/images/icons/angebot.jpg" alt="Kundenangebote">
+                    <figcaption>Kundenangebote verwalten</figcaption>
                 </a>
             </figure>
         </div>
 
         <div class="dashboard-block">
             <figure class="dashboardauswahl">
-                <a href="index.php?section=rechnungen">
-                    <img src="public/images/icons/rechnung.jpg" alt="Rechnungen">
-                    <figcaption>Rechnungen</figcaption>
+                <a href="index.php?section=Angebotsstatus">
+                    <img src="public/images/icons/angebot.jpg" alt="Angebotsstatus">
+                    <figcaption>Angebotsstatus ändern</figcaption>
+                </a>
+            </figure>
+        </div>
+
+        <div class="dashboard-block">
+            <figure class="dashboardauswahl">
+                <a href="index.php?section=Kundenaufträge">
+                    <img src="public/images/icons/auftrag.jpg" alt="Kundenaufträge">
+                    <figcaption>Kundenaufträge abrufen</figcaption>
+                </a>
+            </figure>
+        </div>
+
+        <div class="dashboard-block">
+            <figure class="dashboardauswahl">
+                <a href="index.php?section=Kundenrechnungen">
+                    <img src="public/images/icons/rechnung.jpg" alt="Kundenrechnungen">
+                    <figcaption>Kundenrechnungen abrufen</figcaption>
                 </a>
             </figure>
         </div>

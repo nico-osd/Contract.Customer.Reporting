@@ -59,7 +59,6 @@ class Database extends PDO {
         return $sth->fetchAll($fetchMode);
     }
 
-
     /**
      * Prepared insert statement
      *
@@ -138,6 +137,24 @@ class Database extends PDO {
     public function delete($table, $where, $limit = 1) {
         return $this->exec("DELETE FROM $table WHERE $where LIMIT $limit");
 
+    }
+
+
+    /**
+     * Returns the last auto increment value from a table
+     *
+     * @param string $table The name of the table
+     * @return array
+     */
+    public function getLastIDFromTable($table) {
+        $sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = '" . DB_NAME . "' AND TABLE_NAME = '" . $table . "'";
+
+        $sth = $this->prepare($sql);
+        $sth->execute();
+
+        $arrayData = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+        return $arrayData[0]['AUTO_INCREMENT'];
     }
 
 }

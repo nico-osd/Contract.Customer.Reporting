@@ -94,7 +94,8 @@ foreach (glob(INCS . "*.inc.php") as $filename) {
             if (isset($_GET['section'])) {
                 if (!Session::get("username")) {
                     require BOUNDARIES . "login/login.php";
-                } else {
+                }
+                else {
                     //Hier werden die verschiedenen sections eingetragen == verschiedene HTML Seiten
                     switch ($_GET['section']) {
                         case "dashboard":
@@ -102,8 +103,14 @@ foreach (glob(INCS . "*.inc.php") as $filename) {
                             break;
 
                         /* INCLUDES VON AUFTRAGSMANAGEMENT */
-                        case "artikel":
-                            require BOUNDARIES . "article/article.php";
+                        case "Artikel":
+                            require BOUNDARIES . "article/index.php";
+                            break;
+                        case htmlspecialchars("Artikel anlegen"):
+                            require BOUNDARIES . "article/createArticle.php";
+                            break;
+                        case htmlspecialchars("Artikel suchen"):
+                            require BOUNDARIES . "article/searchArticle.php";
                             break;
 
                         /* INCLUDES VON KUNDENBEZIEHUNGSMANAGEMENT */
@@ -150,7 +157,7 @@ foreach (glob(INCS . "*.inc.php") as $filename) {
     <!-- FOOTER, AUßERHALB VOM DIV "WRAPPER" -> FOOTER BLEIBT GANZ UNTEN  -->
     <div id="footer">
         <div id="footer-content">
-            <a href="fpdf17/FAQ.htm">FAQ | Impressum</a>
+            <p>&copy 2014 CCR</p>
         </div>
     </div>
 
