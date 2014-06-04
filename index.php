@@ -113,6 +113,11 @@ foreach (glob(INCS . "*.inc.php") as $filename) {
                             require BOUNDARIES . "customer/newCustomer.php";
                             break;
 
+                        case htmlspecialchars("kundengruppe"):
+                            require BOUNDARIES . "customer/newCustomerGroup.php";
+                            break;
+
+
                         /* INCLUDES VON BERICHTSWESEN */
                         case 'Personalreporting':
                             include('Berichtswesen/Personalreporting.php');
