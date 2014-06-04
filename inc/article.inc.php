@@ -33,8 +33,9 @@ if(isset($_POST['createArticle'])) {
 /**
  * Wird ausgeführt wenn user auf submit Button mit name=searchArticle klick
  */
-if(isset($_POST['createArticle'])) {
+if(isset($_POST['serchArticle'])) {
 
+    //TODO: Anpassen auf Artikel suchen -> AJAX
     $articleTableData = array(
         "bezeichnung" => $_POST['bezeichnung'],
         "einheit" => $_POST['einheit'],
@@ -52,9 +53,10 @@ if(isset($_POST['createArticle'])) {
 }
 
 
+
+/**
+ * Artikelkategorien für Dropdown Menü holen
+ */
 if(isset($_GET['section']) && $_GET['section'] == "Artikel anlegen") {
-
     $articleCategories = $article->getCategories();
-
-
 }
