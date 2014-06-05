@@ -267,10 +267,13 @@ a {
     display: inline-block;
 }
 
-
+/*
+************************** AKKORDION CSS-GLOBAL**************************
+*/
 
 /*
-*Das CSS gilt jetzt für alle Akkordions, es ist aber auch für einzelne Divs anpassbar
+*Das CSS gilt jetzt für alle Akkordions, es ist aber auch für einzelne Divs anpassbar(hoffe ich zumindest, ansonsten
+* muss halt für jedes akkordion einzeln via css selektor angepasst werden
 */
 
 /*
@@ -291,16 +294,23 @@ a {
 }
 
 /*
-*Margin ändert Abstand Zwischen den divs  (geht nicht hier?)
+*Margin ändert Abstand Zwischen den divs
+*NICHT LÖSCHEN
 */
  .ui-accordion .ui-accordion-header {
     display: block;
     cursor: pointer;
     position: relative;
-    margin-top: 50px !important;
-    padding: .5em .5em .5em .7em;
+     margin-top: 50px !important;
+    padding: .5em .5em .5em 2em; /*Schriftausrichtung Header */
     min-height: 0; /* support: IE7 */
+   /*width:900px;*/ /* Header Width */ /*Anmerkung: Content Width kann zb als Inline Style im  "Accordion"-Div  geändert werden" */
 }
+
+ #dashboard-accordion .ui-accordion-content {
+    margin:0;
+     padding: 0;
+ }
 
 
 /*
@@ -312,9 +322,11 @@ a {
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
     border: none !important ;
-    background:none !important;
-    background: #e6e6e6 url(images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x;
+   /* background:none !important;*/
+    background: #33CCFF  url("file:///C:/Simon/Progs/XAMPP/htdocs/Contract.Customer.Reporting/public/images/hellblau.jpg") repeat-x !important;
+    /*background: #e6e6e6 url(images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x; */
     font-weight: normal;
+
     color: #555555;
 }
 
@@ -323,8 +335,8 @@ a {
 *NICHT LÖSCHEN
 */
 .ui-progressbar .ui-progressbar-overlay {
-    background:none !important;
-     /* background: url("images/animated-overlay.gif"); */
+    /* background:none !important;*/
+     /* background: url("images/animated-overlay.gif")!important ; */
     height: 100%;
     filter: alpha(opacity=25);
     opacity: 0.25;
@@ -340,14 +352,33 @@ a {
 .ui-state-focus,
 .ui-widget-content .ui-state-focus,
 .ui-widget-header .ui-state-focus {
-    background:none !important;
+    /*background:none !important;*/
     border: 1px solid #999999;
-    background: #dadada url(images/ui-bg_glass_75_dadada_1x400.png) 50% 50% repeat-x;
+    /* background: #dadada url(images/ui-bg_glass_75_dadada_1x400.png) 50% 50% repeat-x;*/
     font-weight: normal;
     color: #212121;
 }
 
+/*
+*Schriftart und Schriftgrösse in einem Container ändern
+*
+*/
+
+.ui-widget {
+   x font-family:  'Dosis', sans-serif !important;
+    x font-size: 1.4em !important;
+    x font-weight: bold !important;
+
+    margin: 0px !important;
+}
 
 
+/*
 
+font-family: 'Dosis', sans-serif;
+ font-weight: bold
+die Hintergrundfarbe der Tabs kann blau sein, dann passts in unser Look and Feel
+7und DIE Texte in den Titel (z.B. "Auftragsmanagement") eben in weiss z.B.
+
+*/
 
