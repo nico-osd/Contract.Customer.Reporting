@@ -1,22 +1,26 @@
 <?php
 //Für Breadcrumb
 use CCR\libs\Cookie;
-Cookie::setBreadcrumbCookie(array("dashboard", "Artikel", "Artikel suchen"));
+Cookie::setBreadcrumbCookie(array("dashboard", "Artikel", "Artikel löschen"));
 ?>
 
 
 <script type="text/javascript">
     $(function(){
         $("#form-search-article").customAjaxDisplayTable({
-            outputDivIdName: "search-article-result",
+            outputDivIdName: "delete-article-result",
             tableHeaderValues: [
                 "Artikelnummer",
                 "Bezeichnung",
                 "Kategorie",
                 "Einheit",
                 "Einkaufspreis",
-                "Nettopreis"
-                ]
+                "Nettopreis",
+                "Löschen"
+                ],
+            actionFieldCode: 1,
+            redirectLocation: "section=Artikel",
+            primaryKeyTableColumnName: "idArtikel"
         });
     });
 </script>
@@ -46,7 +50,7 @@ Cookie::setBreadcrumbCookie(array("dashboard", "Artikel", "Artikel suchen"));
     </form>
 
 
-    <div id="search-article-result">
+    <div id="delete-article-result">
         <!-- TODO: Tabellenformatierung festlegen -->
         <table class="display-none" style="width:100%;" border="1px">
 

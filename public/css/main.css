@@ -227,6 +227,11 @@ a {
 ************************** ALLE NEUEN CSS DEFINITIONEN == CSS VON CCR **************************
 */
 
+/* HIDE CONTENT */
+.display-none {
+    display: none;
+}
+
 
 /* ERROR MESSAGES */
 .error-messages {
@@ -254,12 +259,6 @@ a {
 #footer p {
     color: #F8F8F2;
     margin: 0;
-}
-
-/* DASHBOARD REIHE VON AUSWAHLBLÖCKEN */
-.row {
-    height: 100%;
-    text-align: left;
 }
 
 /* DASHBOARD AUSWAHL BLOCK */
