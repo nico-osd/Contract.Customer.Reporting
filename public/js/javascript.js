@@ -41,6 +41,11 @@ $(function(){
      * - options
      *      - outputDivIdName: DIV Id Name wo daten anzegezeigt werden sollen
      *      - tableHeaderValues: Überschriften für die Tabelle
+     *      - actionFieldCode: 1 = Fügt Feld "Löschen" hinzu, 2 = Fügt Feld "Ändern" hinzu
+     *      - redirectLocation: Wenn actionFieldCode gesetzt ist -> wo wird man hingeleitet wenn man auf löschen klickt
+     *        zb: section=Artikel
+     *      - primaryKeyTableColumnName: Spaltenname welcher Primary Key von der Tabelle die angezeigt wird
+     *        zb: Tabelle für Tabelle Artikel -> idArtikel, da Artikelnummer angezeigt wird
      *
      * @param options Legt settings fest
      */
@@ -62,8 +67,8 @@ $(function(){
             var url = $(this).attr("action"); //HTML form action url
             var type = $(this).attr("method"); //HTML form method type (post/get)
             var inputData = $(this).serialize(); //HTML form data in JSON format
-            var outputDiv = "#" + settings.outputDivIdName;
-            var outputTable = "#" + settings.outputDivIdName + " table"; //DIV to display result
+            var outputDiv = "#" + settings.outputDivIdName; //HTML DIV
+            var outputTable = "#" + settings.outputDivIdName + " table"; //HTML Tabelle
 
             //Fire Ajax request
             $.ajax({
