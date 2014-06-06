@@ -33,8 +33,25 @@ class ArticleController {
         $this->article->insert($articleTableData, $artikelHasKategorieData);
     }
 
-    public function searchArticle() {
+    public function searchArticle($data) {
+        $data = $this->article->select($data);
 
+        $responseArray = array();
+
+        if(empty($data)) {
+            $responseArray["status"] = "error";
+            $responseArray["answer"] = "Keine Artikel gefunden!";
+        }
+        else {
+            $responseArray["status"] = "success";
+            $responseArray["answer"] = $data;
+        }
+
+        return $responseArray;
+    }
+
+    public function delete($id){
+        $this->article->delete($id);
     }
 
 } 
