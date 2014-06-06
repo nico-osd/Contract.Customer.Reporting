@@ -6,7 +6,7 @@ Cookie::setBreadcrumbCookie(array("dashboard"));
 
 <hr>
 
-<div id="dashboard" style="clear: both;width:1200px;"  >
+<div id="dashboard"  >
 
     <div id="dashboard-accordion">
 
