@@ -30,6 +30,7 @@ class Database extends PDO {
         }
         catch(PDOException $e) {
             echo $e->getMessage();
+            die;
         }
 
         //parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

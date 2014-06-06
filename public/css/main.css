@@ -94,13 +94,7 @@ a {
     border-radius:2px;
 }
 
-.left {
-    float: left;
-}
 
-.right {
-    float: right;
-}
 .r10 {
     margin-right: 10px;
 }
@@ -194,51 +188,28 @@ a {
     -o-border-radius: 3px;
 }
 
-.dashboardauswahl {
-    margin: 20px;
-
-}
-
-.dashboardauswahl img {
-    width: 200px;
-    height: 200px;
-    margin-bottom: 5px;
-}
-
-.dashboardauswahl figcaption {
-    text-align: center;
-    font-family: 'Dosis';
-    font-size: 0.9em;
-}
-
-.dashboardauswahl a {
-    color: #000;
-    text-decoration: none;
-}
-
-.dashboardauswahl a:hover{
-    opacity: 0.8;
-    color: #0066B4;
-}
-
 
 
 /*
 ************************** ALLE NEUEN CSS DEFINITIONEN == CSS VON CCR **************************
 */
 
-/* HIDE CONTENT */
+/****** HIDE CONTENT ******/
 .display-none {
     display: none;
 }
 
+/****** CLEAR FLOATING ******/
+.clearfix {
+    clear: both;
+}
 
-/* ERROR MESSAGES */
+/****** ERROR MESSAGES******/
 .error-messages {
     color: red;
 }
 
-/* FOOTER */
+/****** FOOTER ******/
 #footer {
     position: absolute;
     width: 100%;
@@ -261,10 +232,44 @@ a {
     margin: 0;
 }
 
-/* DASHBOARD AUSWAHL BLOCK */
-.dashboard-block {
-    display: inline-block;
+
+/****** DASHBOARD ROW ******/
+.dashboard-row {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
 }
+
+/****** DASHBOARD AUSWAHL BLOCK ******/
+.dashboard-block {
+    float: left;
+    display: table-cell;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box; /* Firefox 28 and earlier*/
+    width: 25%;
+    height: 100%;
+    margin-top: 20px;
+}
+
+.dashboard-block img {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    display: block;
+}
+
+.dashboard-block p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.dashboard-block a:hover {
+    opacity: 0.8;
+    color: #0066B4;
+}
+
 
 /*
 ************************** AKKORDION CSS-GLOBAL**************************
@@ -364,9 +369,9 @@ a {
 */
 
 .ui-widget {
-   x font-family:  'Dosis', sans-serif !important;
-    x font-size: 1.4em !important;
-    x font-weight: bold !important;
+    xfont-family:  'Dosis', sans-serif !important;
+    xfont-size: 1.4em !important;
+    xfont-weight: bold !important;
 
     margin: 0px !important;
 }
