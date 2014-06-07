@@ -1,14 +1,21 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: fabiangrutsch
+ * Date: 06.06.14
+ * Time: 19:05
+ */
+
+
 //Für Breadcrumb
 use CCR\libs\Cookie;
-Cookie::setBreadcrumbCookie(array("dashboard", "Artikel", "Artikel löschen"));
+Cookie::setBreadcrumbCookie(array("dashboard", "Artikel", "Artikel ändern"));
 ?>
-
 
 <script type="text/javascript">
     $(function(){
         $("#form-search-article").customAjaxDisplayTable({
-            outputDivIdName: "delete-article-result",
+            outputDivIdName: "edit-article-result",
             tableHeaderValues: [
                 "Artikelnummer",
                 "Bezeichnung",
@@ -16,10 +23,10 @@ Cookie::setBreadcrumbCookie(array("dashboard", "Artikel", "Artikel löschen"));
                 "Einheit",
                 "Einkaufspreis",
                 "Nettopreis",
-                "Löschen"
-                ],
-            actionFieldCode: 1,
-            redirectLocation: "section=Artikel",
+                "Ändern"
+            ],
+            actionFieldCode: 2,
+            redirectLocation: "section=Artikel speichern",
             primaryKeyTableColumnName: "idArtikel"
         });
     });
@@ -50,10 +57,29 @@ Cookie::setBreadcrumbCookie(array("dashboard", "Artikel", "Artikel löschen"));
     </form>
 
 
-    <div id="delete-article-result">
+    <div id="edit-article-result">
         <!-- TODO: Tabellenformatierung festlegen -->
         <table class="display-none" style="width:100%;" border="1px">
 
         </table>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -112,6 +112,12 @@ foreach (glob(INCS . "*.inc.php") as $filename) {
                         case htmlspecialchars("Artikel suchen"):
                             require BOUNDARIES . "article/searchArticle.php";
                             break;
+                        case htmlspecialchars("Artikel ändern"):
+                            require BOUNDARIES . "article/editArticle.php";
+                            break;
+                        case htmlspecialchars("Artikel speichern"):
+                            require BOUNDARIES . "article/saveEditArticle.php";
+                            break;
                         case htmlspecialchars("Artikel löschen"):
                             require BOUNDARIES . "article/deleteArticle.php";
                             break;

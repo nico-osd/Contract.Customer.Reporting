@@ -12,8 +12,13 @@ use CCR\libs\CheckRequestMethod;
 // Artikel Controller
 $article = new ArticleController();
 
+//Artikel Kategorien
+$articleCategories = $article->getCategories();
+
+
+
 /**
- * Wird ausgeführt wenn user auf submit Button klickt
+ * Wird ausgeführt wenn user auf artikel erstellen will
  */
 if(CheckRequestMethod::issetPOST(array("createArticle" => ""))) {
     $articleTableData = array(
@@ -55,11 +60,30 @@ if(CheckRequestMethod::issetGET(array("section" => "Artikel suchen", "action" =>
     die;
 }
 
+/**
+ * Daten von Artikel holen der geändert wird
+ */
+if(CheckRequestMethod::issetGET(array("section" => "Artikel speichern", "action" => "edit", "val" => ""))) {
+    $data = array(
+        "artikelID" => $_GET['val']
+    );
 
+    $singleArticleInfo = $article->getSingleArticleInfo($data);
+}
 
 /**
- * Artikelkategorien für Dropdown Menü holen
+ * Daten von geändert Artikel in Datenbank speichern
  */
-if(CheckRequestMethod::issetGET(array("section" => "Artikel anlegen"))) {
-    $articleCategories = $article->getCategories();
+if(CheckRequestMethod::issetPOST(array("saveEditArticle" => ""))) {
+    $data = array(
+        "bezeichnung" => $_POST['bezeichnung'],
+        "einheit" => $_POST['einheit'],
+        "einkaufspreis" => $_POST['einkaufspreis'],
+        "nettopreis" => $_POST['nettopreis'],
+        "Kategorie_idKategorie" => $_POST['kategorie'],
+    );
+
+    $articleId = $_POST['idArtikel'];
+
+    $article->editArticle($data, $articleId);
 }

@@ -47,8 +47,44 @@ class Article extends BaseEntity {
         return $this->db->select($stmt, $data);
     }
 
+    /**
+     * Artikel löschen
+     *
+     * @param string $id ID des Artikels
+     * @return int|void
+     */
     public function delete($id) {
         $this->db->delete("artikel", "idArtikel = '$id'");
+    }
+
+
+    /**
+     * Artikeldaten updaten
+     *
+     * @param string $data Neue Daten
+     * @param integer $articleId Artikel ID
+     */
+    public function update($data, $articleId) {
+        $table = "artikel INNER JOIN artikel_has_kategorie ON idArtikel = Artikel_idArtikel";
+        $where = "idArtikel = " . $articleId;
+
+        $this->db->update($table, $data, $where);
+    }
+
+
+    /**
+     * Informationen für einen bestimmten Artikel
+     *
+     * @param integer $dataID ID des Artikels
+     * @return array|mixed
+     */
+    public function singleArticleInfo($dataID) {
+        $stmt = "SELECT bezeichnung, name, einheit, einkaufspreis, nettopreis FROM artikel
+        JOIN artikel_has_kategorie ON idArtikel = Artikel_idArtikel
+        JOIN kategorie ON Kategorie_idKategorie = idKategorie
+        WHERE idArtikel = :artikelID";
+
+        return $this->db->select($stmt, $dataID);
     }
 
 } 
