@@ -6,147 +6,130 @@ Cookie::setBreadcrumbCookie(array("dashboard"));
 
 <hr>
 
-<div id="dashboard" style="clear: both">
+<!-- TODO: Schriftart und style von figcaption == <p> ändern -->
 
+<div id="dashboard"  >
     <div id="dashboard-accordion">
-
         <!-- AUFTRAGSMANAGEMENT -->
         <h3>Auftragsmanagement</h3>
         <div>
-            <div class="dashboard-block">
-                <figure class="dashboardauswahl">
+            <!-- erste Reihe -->
+            <div class="dashboard-row clearfix">
+                <div class="dashboard-block">
                     <a href="index.php?section=Artikel">
                         <img src="public/images/icons/artikel.jpg" alt="Artikel">
-                        <figcaption>Artikel verwalten</figcaption>
+                        <p>Artikel verwalten</p>
                     </a>
-                </figure>
-            </div>
+                </div>
 
-            <div class="dashboard-block">
-                <figure class="dashboardauswahl">
+                <div class="dashboard-block">
                     <a href="index.php?section=Lieferantenkonditionen">
                         <img src="public/images/icons/angebot.jpg" alt="Lieferantenkonditionen">
-                        <figcaption>Lieferantenkonditionen verwalten</figcaption>
+                        <p>Lieferantenkonditionen verwalten</p>
                     </a>
-                </figure>
-            </div>
+                </div>
 
-            <div class="dashboard-block">
-                <figure class="dashboardauswahl">
+                <div class="dashboard-block">
                     <a href="index.php?section=Kundenangebote">
                         <img src="public/images/icons/angebot.jpg" alt="Kundenangebote">
-                        <figcaption>Kundenangebote verwalten</figcaption>
+                        <p>Kundenangebote verwalten</p>
                     </a>
-                </figure>
-            </div>
+                </div>
 
-            <div class="dashboard-block">
-                <figure class="dashboardauswahl">
+                <div class="dashboard-block">
                     <a href="index.php?section=Angebotsstatus">
                         <img src="public/images/icons/angebot.jpg" alt="Angebotsstatus">
-                        <figcaption>Angebotsstatus ändern</figcaption>
+                        <p>Angebotsstatus ändern</p>
                     </a>
-                </figure>
-            </div>
+                </div>
+            </div> <!-- end of erste Reihe -->
 
-            <div class="dashboard-block">
-                <figure class="dashboardauswahl">
+            <!-- zweite Reihe -->
+            <div class="dashboard-row clearfix">
+                <div class="dashboard-block">
                     <a href="index.php?section=Kundenaufträge">
                         <img src="public/images/icons/auftrag.jpg" alt="Kundenaufträge">
-                        <figcaption>Kundenaufträge abrufen</figcaption>
+                        <p>Kundenaufträge abrufen</p>
                     </a>
-                </figure>
-            </div>
+                </div>
 
-            <div class="dashboard-block">
-                <figure class="dashboardauswahl">
+                <div class="dashboard-block">
                     <a href="index.php?section=Kundenrechnungen">
                         <img src="public/images/icons/rechnung.jpg" alt="Kundenrechnungen">
-                        <figcaption>Kundenrechnungen abrufen</figcaption>
+                        <p>Kundenrechnungen abrufen</p>
                     </a>
-                </figure>
-            </div>
-        </div> <!-- end of div -->
+                </div>
+            </div> <!-- end of zweite Reihe -->
+        </div> <!-- end of div auftragsmanagement -->
 
 
         <!-- KUNDENBEZIEHUNGSMANAGEMENT -->
         <h2>Kundenbeziehungsmanagement</h2>
 
         <div>
-            <div class="dashboard-block">
-                <figure class="dashboardauswahl">
+            <!-- erste Reihe -->
+            <div class="dashboard-row">
+                <div class="dashboard-block">
                     <a href="index.php?section=<?php echo htmlspecialchars("Kunde anlegen"); ?>">
                         <img src="public/images/icons/kundeanlegen.png" alt="Kunde anlegen">
-                        <figcaption>Kunde anlegen</figcaption>
+                        <p>Kunde anlegen</p>
                     </a>
-                </figure>
-            </div>
+                </div>
 
-            <div class="dashboard-block">
-                <figure class="dashboardauswahl">
+                <div class="dashboard-block">
                     <a href="index.php?section=kundengruppe">
                         <img src="public/images/icons/kundengruppe.png" alt="Kundengruppen">
-                        <figcaption>Kundengruppen</figcaption>
+                        <p>Kundengruppen</p>
                     </a>
-                </figure>
-            </div>
+                </div>
 
-            <div class="dashboard-block">
-                <figure class="dashboardauswahl">
+                <div class="dashboard-block">
                     <a href="index.php?section=kundenanfragen">
                         <img src="public/images/icons/kundenanfragen.png" alt="Kundenanfragen">
-                        <figcaption>Anfrage aufnehmen</figcaption>
+                        <p>Anfrage aufnehmen</p>
                     </a>
-                </figure>
-            </div>
+                </div>
 
-            <div class="dashboard-block">
-                <figure class="dashboardauswahl">
+                <div class="dashboard-block">
                     <a href="index.php?section=feedback">
                         <img src="public/images/icons/feedback.png" alt="Feedback">
-                        <figcaption>Kunden Feedback</figcaption>
+                        <p>Kunden Feedback</p>
                     </a>
-                </figure>
-            </div>
+                </div>
+            </div> <!-- end of erste Reihe -->
 
 
             <!-- zweite Reihe -->
-            <div class="dashboard-block">
-                <figure class="dashboardauswahl">
+            <div class="dashboard-row" style="clear: both">
+                <div class="dashboard-block">
                     <a href="index.php?section=kundendaten">
                         <img src="public/images/icons/kunde.png" alt="Kundendaten">
-                        <figcaption>Kundendaten</figcaption>
+                        <p>Kundendaten</p>
                     </a>
-                </figure>
-            </div>
+                </div>
 
-            <div class="dashboard-block">
-                <figure class="dashboardauswahl">
+                <div class="dashboard-block">
                     <a href="index.php?section=lieferantendaten">
                         <img src="public/images/icons/kunde.png" alt="Kunden">
-                        <figcaption>Lieferantendaten</figcaption>
+                        <p>Lieferantendaten</p>
                     </a>
-                </figure>
-            </div>
+                </div>
 
-            <div class="dashboard-block">
-                <figure class="dashboardauswahl">
+                <div class="dashboard-block">
                     <a href="index.php?section=Kundenanfragen">
                         <img src="public/images/icons/Kundenanfrage.png" alt="Kundenanfragen">
-                        <figcaption>Kundenanfragen</figcaption>
+                        <p>Kundenanfragen</p>
                     </a>
-                </figure>
-            </div>
+                </div>
 
-            <div class="dashboard-block">
-                <figure class="dashboardauswahl">
+                <div class="dashboard-block">
                     <a href="index.php?section=emailings">
                         <img src="public/images/icons/Serienbriefe.png" alt="Emailings & Serienbriefe">
-                        <figcaption>Emailings & Serienbriefe</figcaption>
+                        <p>Emailings & Serienbriefe</p>
                     </a>
-                </figure>
-            </div>
-        </div>
+                </div>
+            </div> <!-- end of zweite Reihe -->
+        </div> <!-- end of div kundenbeziehungsmanagement -->
 
 
         <!-- BERICHTSWESEN -->

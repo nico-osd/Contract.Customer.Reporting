@@ -7,6 +7,7 @@
  */
 
 use CCR\controllers\ArticleController;
+use CCR\libs\CheckRequestMethod;
 
 // Artikel Controller
 $article = new ArticleController();
@@ -14,8 +15,7 @@ $article = new ArticleController();
 /**
  * Wird ausgeführt wenn user auf submit Button klickt
  */
-if(isset($_POST['createArticle'])) {
-
+if(CheckRequestMethod::issetPOST(array("createArticle" => ""))) {
     $articleTableData = array(
         "bezeichnung" => $_POST['bezeichnung'],
         "einheit" => $_POST['einheit'],
@@ -30,26 +30,29 @@ if(isset($_POST['createArticle'])) {
     $article->createArticle($articleTableData, $artikelHasKategorieData);
 }
 
+
 /**
- * Wird ausgeführt wenn user auf submit Button mit name=searchArticle klick
+ * Wird ausgeführt wenn User einen artikel löscht
  */
-if(isset($_POST['serchArticle'])) {
+if(CheckRequestMethod::issetGET(array("section" => "Artikel", "action" => "delete", "val" => ""))) {
+    $article->delete($_GET['val']);
+}
 
-    //TODO: Anpassen auf Artikel suchen -> AJAX
-    $articleTableData = array(
-        "bezeichnung" => $_POST['bezeichnung'],
-        "einheit" => $_POST['einheit'],
-        "einkaufspreis" => $_POST['einkaufspreis'],
-        "nettopreis" => $_POST['nettopreis']
+
+
+/**
+ * Wird ausgeführt wenn ein User einen Artikel sucht, wird aufgerufen durch AJAX Request
+ */
+if(CheckRequestMethod::issetGET(array("section" => "Artikel suchen", "action" => "search"))) {
+    $searchData = array(
+        "artikelnummer" => "%" . $_POST['artikelnummer'] . "%",
+        "bezeichnung" => "%" . $_POST['bezeichnung'] . "%"
     );
 
-    $artikelHasKategorieData = array(
-        "Kategorie_idKategorie" => $_POST['kategorie']
-    );
-
-    $article->createArticle($articleTableData, $artikelHasKategorieData);
-
-
+    echo json_encode($article->searchArticle($searchData));
+    //Stoppt das nachstehender Inhalt geladen wird, muss verwendet werden
+    //sonst ist das Ergebnis für den Ajax Request die ganze HTML Seite
+    die;
 }
 
 
@@ -57,6 +60,6 @@ if(isset($_POST['serchArticle'])) {
 /**
  * Artikelkategorien für Dropdown Menü holen
  */
-if(isset($_GET['section']) && $_GET['section'] == "Artikel anlegen") {
+if(CheckRequestMethod::issetGET(array("section" => "Artikel anlegen"))) {
     $articleCategories = $article->getCategories();
 }

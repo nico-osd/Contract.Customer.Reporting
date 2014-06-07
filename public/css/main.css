@@ -94,13 +94,7 @@ a {
     border-radius:2px;
 }
 
-.left {
-    float: left;
-}
 
-.right {
-    float: right;
-}
 .r10 {
     margin-right: 10px;
 }
@@ -194,46 +188,28 @@ a {
     -o-border-radius: 3px;
 }
 
-.dashboardauswahl {
-    margin: 20px;
-
-}
-
-.dashboardauswahl img {
-    width: 200px;
-    height: 200px;
-    margin-bottom: 5px;
-}
-
-.dashboardauswahl figcaption {
-    text-align: center;
-    font-family: 'Dosis';
-    font-size: 0.9em;
-}
-
-.dashboardauswahl a {
-    color: #000;
-    text-decoration: none;
-}
-
-.dashboardauswahl a:hover{
-    opacity: 0.8;
-    color: #0066B4;
-}
-
 
 
 /*
 ************************** ALLE NEUEN CSS DEFINITIONEN == CSS VON CCR **************************
 */
 
+/****** HIDE CONTENT ******/
+.display-none {
+    display: none;
+}
 
-/* ERROR MESSAGES */
+/****** CLEAR FLOATING ******/
+.clearfix {
+    clear: both;
+}
+
+/****** ERROR MESSAGES******/
 .error-messages {
     color: red;
 }
 
-/* FOOTER */
+/****** FOOTER ******/
 #footer {
     position: absolute;
     width: 100%;
@@ -256,21 +232,52 @@ a {
     margin: 0;
 }
 
-/* DASHBOARD REIHE VON AUSWAHLBLÖCKEN */
-.row {
-    height: 100%;
-    text-align: left;
+
+/****** DASHBOARD ROW ******/
+.dashboard-row {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
 }
 
-/* DASHBOARD AUSWAHL BLOCK */
+/****** DASHBOARD AUSWAHL BLOCK ******/
 .dashboard-block {
-    display: inline-block;
+    float: left;
+    display: table-cell;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box; /* Firefox 28 and earlier*/
+    width: 25%;
+    height: 100%;
+    margin-top: 20px;
 }
 
+.dashboard-block img {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    display: block;
+}
+
+.dashboard-block p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.dashboard-block a:hover {
+    opacity: 0.8;
+    color: #0066B4;
+}
 
 
 /*
-*Das CSS gilt jetzt für alle Akkordions, es ist aber auch für einzelne Divs anpassbar
+************************** AKKORDION CSS-GLOBAL**************************
+*/
+
+/*
+*Das CSS gilt jetzt für alle Akkordions, es ist aber auch für einzelne Divs anpassbar(hoffe ich zumindest, ansonsten
+* muss halt für jedes akkordion einzeln via css selektor angepasst werden
 */
 
 /*
@@ -291,16 +298,23 @@ a {
 }
 
 /*
-*Margin ändert Abstand Zwischen den divs  (geht nicht hier?)
+*Margin ändert Abstand Zwischen den divs
+*NICHT LÖSCHEN
 */
  .ui-accordion .ui-accordion-header {
     display: block;
     cursor: pointer;
     position: relative;
-    margin-top: 50px !important;
-    padding: .5em .5em .5em .7em;
+     margin-top: 50px !important;
+    padding: .5em .5em .5em 2em; /*Schriftausrichtung Header */
     min-height: 0; /* support: IE7 */
+   /*width:900px;*/ /* Header Width */ /*Anmerkung: Content Width kann zb als Inline Style im  "Accordion"-Div  geändert werden" */
 }
+
+ #dashboard-accordion .ui-accordion-content {
+    margin:0;
+     padding: 0;
+ }
 
 
 /*
@@ -312,9 +326,11 @@ a {
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
     border: none !important ;
-    background:none !important;
-    background: #e6e6e6 url(images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x;
+   /* background:none !important;*/
+    background: #33CCFF  url("file:///C:/Simon/Progs/XAMPP/htdocs/Contract.Customer.Reporting/public/images/hellblau.jpg") repeat-x !important;
+    /*background: #e6e6e6 url(images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x; */
     font-weight: normal;
+
     color: #555555;
 }
 
@@ -323,8 +339,8 @@ a {
 *NICHT LÖSCHEN
 */
 .ui-progressbar .ui-progressbar-overlay {
-    background:none !important;
-     /* background: url("images/animated-overlay.gif"); */
+    /* background:none !important;*/
+     /* background: url("images/animated-overlay.gif")!important ; */
     height: 100%;
     filter: alpha(opacity=25);
     opacity: 0.25;
@@ -340,14 +356,33 @@ a {
 .ui-state-focus,
 .ui-widget-content .ui-state-focus,
 .ui-widget-header .ui-state-focus {
-    background:none !important;
+    /*background:none !important;*/
     border: 1px solid #999999;
-    background: #dadada url(images/ui-bg_glass_75_dadada_1x400.png) 50% 50% repeat-x;
+    /* background: #dadada url(images/ui-bg_glass_75_dadada_1x400.png) 50% 50% repeat-x;*/
     font-weight: normal;
     color: #212121;
 }
 
+/*
+*Schriftart und Schriftgrösse in einem Container ändern
+*
+*/
+
+.ui-widget {
+    xfont-family:  'Dosis', sans-serif !important;
+    xfont-size: 1.4em !important;
+    xfont-weight: bold !important;
+
+    margin: 0px !important;
+}
 
 
+/*
 
+font-family: 'Dosis', sans-serif;
+ font-weight: bold
+die Hintergrundfarbe der Tabs kann blau sein, dann passts in unser Look and Feel
+7und DIE Texte in den Titel (z.B. "Auftragsmanagement") eben in weiss z.B.
+
+*/
 
