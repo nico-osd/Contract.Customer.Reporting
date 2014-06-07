@@ -49,9 +49,9 @@
 	border-bottom:1px solid #eee;
 	position:relative;
 } 
-.formular li:first-child, .formular li:last-child {
-	border-bottom:1px solid #777;
-}
+/*.formular li:first-child, .formular li:last-child {*/
+	/*border-bottom:1px solid #777;*/
+/*}*/
 
 /* === Form Header === */
 .formular h2 {
