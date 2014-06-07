@@ -195,6 +195,11 @@ button.submit {
 	text-align: center;
 	text-shadow: 0 -1px 0 #396715;
 }
+
+.buttonUnderForm {
+    margin-top: 10px; margin-bottom: 2em;
+}
+
 button.submit:hover {
 	opacity:.85;
 	cursor: pointer; 

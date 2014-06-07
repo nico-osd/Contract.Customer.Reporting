@@ -69,7 +69,7 @@ Cookie::setBreadcrumbCookie(array("dashboard", "Artikel", "Artikel ändern"));
         <!-- Hidden input Feld, wird verwendet für die ID des Artikels welcher upgedatet werden soll -->
         <input hidden="hidden" name="idArtikel" value="<?php echo $_GET['val'];?>">
 
-        <button class="submit buttonIEdisable" style="margin-top: 10px; margin-bottom: 2em;" name="saveEditArticle"
+        <button class="submit buttonIEdisable buttonUnderForm" name="saveEditArticle"
                 type="submit" form="form-edit-article">Ändern</button>
     </form>
 </div>

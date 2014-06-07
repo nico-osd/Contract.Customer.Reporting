@@ -57,7 +57,7 @@ Cookie::setBreadcrumbCookie(array("dashboard", "Artikel", "Artikel anlegen"));
                        maxlength="20" min="0" step="any" required/>
             </li>
         </ul>
-        <button class="submit buttonIEdisable" style="margin-top: 10px; margin-bottom: 2em;" name="createArticle"
+        <button class="submit buttonIEdisable buttonUnderForm" name="createArticle"
                 type="submit" form="form-create-article">Anlegen</button>
     </form>
 </div>

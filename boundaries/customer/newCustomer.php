@@ -67,11 +67,11 @@ $customergroups = new \CCR\entities\Customergroups();
                     <input id="searchOrt" name="searchOrt" value="" type="text" placeholder="Ort"
                            maxlength="255"/>
                 </li>
-                <li>
-                    <button class="submit buttonIEdisable" class="submit buttonIEdisable" name="searchAdress"
-                            type="submit">Suchen</button>
-                </li>
+
             </ul>
+            <button class="submit buttonIEdisable buttonUnderForm" class="submit buttonIEdisable" name="searchAdress"
+                    type="submit">Suchen
+            </button>
 
         </div>
         <h2>Neue Adresse erstellen</h2>
@@ -80,8 +80,11 @@ $customergroups = new \CCR\entities\Customergroups();
             <?php require BOUNDARIES . "templates/adress/newAdress.php" ?>
         </div>
     </div>
-    <button class="submit buttonIEdisable" style="margin-top: 1em;" name="saveCustomer"
+    <button class="submit buttonIEdisable under" name="saveCustomer"
             type="submit" form="customerform">
         Speichern
     </button>
+    <a href="index.php">
+        <button class="delete buttonIEdisable buttonUnderForm" name="discardCustomer" type="button">Abbrechen</button>
+    </a>
 </form>

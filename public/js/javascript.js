@@ -15,7 +15,15 @@ $(function(){
     $("#dashboard-accordion").accordion({
         heightStyle: "content",
         collapsible: true,
-        active: false
+        active: 0
+    });
+});
+
+$(function(){
+    $("#newCustomerAccordion").accordion({
+        heightStyle: "content",
+        collapsible: true,
+        active: 0
     });
 });
 

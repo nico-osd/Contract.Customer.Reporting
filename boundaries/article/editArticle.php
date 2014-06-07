@@ -52,7 +52,7 @@ Cookie::setBreadcrumbCookie(array("dashboard", "Artikel", "Artikel ändern"));
             </li>
 
         </ul>
-        <button class="submit buttonIEdisable" style="margin-top: 10px; margin-bottom: 2em;" name="searchArticle"
+        <button class="submit buttonIEdisable buttonUnderForm" name="searchArticle"
                 type="submit" form="form-search-article">Suchen</button>
     </form>
 
