@@ -130,9 +130,9 @@ $(function(){
                 if(additionalAction == 1) {
                     content += "<td><a href='index.php?"+redirectLocation+"&action=delete&val=" + tableData["answer"][i][columnName] + "'>Löschen</a></td>";
                 }
-
-                // TODO: additionalAction == 2 --> Link "Ändern" hinzufügen
-
+                else if(additionalAction == 2) {
+                    content += "<td><a href='index.php?"+redirectLocation+"&action=edit&val=" + tableData["answer"][i][columnName] + "'>Ändern</a></td>";
+                }
             }
 
             return content;
